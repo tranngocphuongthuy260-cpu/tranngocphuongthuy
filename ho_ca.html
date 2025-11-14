@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hồ cá vui nhộn</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mystyle.css">
+
+    <style>
+        /* Tùy chỉnh vị trí cá thêm */
+        #content { position: relative; width: 100%; height: 600px; }
+
+        .new-animal {
+            position: absolute;
+            animation: GoldFishMove 6s infinite linear;
+        }
+
+        @keyframes GoldFishMove {
+            0%   { transform: translateX(0px); }
+            50%  { transform: translateX(80px); }
+            100% { transform: translateX(0px); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="controls">
+    <button onclick="addAnimal()">➕ Thêm</button>
+    <button onclick="removeLastAnimal()">➖ Bớt</button>
+    <hr>
+</div>
+
+<div id="content">
+    <div id="shark"><img src="images/aquarium/shark.png" alt="Cá mập"></div>
+    <div id="diver1"><img src="images/aquarium/diver1.png" alt="Thợ lặn"></div>
+    <div id="turtle"><img src="images/aquarium/turtle.png" alt="Rùa"></div>
+</div>
+
+<script>
+
+// ----------------------------
+// THÊM / XÓA CÁ
+// ----------------------------
+
+let animalCount = 0;
+
+function addAnimal() {
+    animalCount++;
+
+    const contentDiv = document.getElementById('content');
+    const newAnimal = document.createElement('div');
+
+    newAnimal.id = 'animal-' + animalCount;
+    newAnimal.className = 'new-animal';
+
+    // Random vị trí cá
+    newAnimal.style.left = (Math.random() * 800 + 50) + 'px';
+    newAnimal.style.top  = (Math.random() * 400 + 50) + 'px';
+
+    // Ảnh cá
+    newAnimal.innerHTML =
+        `<img src="images/aquarium/goldFishSchool.png" alt="Cá mới">`;
+
+    contentDiv.appendChild(newAnimal);
+}
+
+function removeLastAnimal() {
+    const contentDiv = document.getElementById('content');
+    const animals = contentDiv.querySelectorAll('.new-animal');
+
+    if (animals.length > 0) {
+        animals[animals.length - 1].remove();
+    } else {
+        alert("Không còn con vật nào để xóa.");
+    }
+}
+
+</script>
+
+</body>
+</html>

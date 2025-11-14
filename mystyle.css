@@ -1,0 +1,113 @@
+body {
+    /* Đặt ảnh nền hồ cá */
+    background-image: url('https://bantranh.com/wp-content/uploads/2021/04/tranh-dan-tuong-3d-duoi-day-dai-duong-2-737x400.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
+#content {
+    position: relative; 
+    width: 100%;
+    height: 100%;
+}
+
+/* Định dạng chung cho các đối tượng di chuyển */
+#shark, #diver1, #turtle, .new-animal {
+    position: absolute; 
+}
+
+/* --- Định dạng Nút điều khiển --- */
+.controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.controls button, .controls select {
+    padding: 8px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* --- 1. Cá Mập (Shark) --- */
+#shark {
+    left: 100px; 
+    top: 400px;
+    animation-name: Shark;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+@keyframes Shark {
+    0%   { left: 100px; top: 400px; transform: scaleX(1); }
+    20%  { left: 300px; top: 300px; }
+    40%  { left: 500px; top: 300px; }
+    50%  { left: 600px; top: 50px; }
+    60%  { left: 600px; top: 50px; }
+    80%  { left: 500px; top: 200px; }
+    99%  { left: 100px; top: 400px; transform: scaleX(1); } 
+    100% { left: 100px; top: 400px; transform: scaleX(-1); } 
+}
+
+/* --- 2. Thợ Lặn (Diver) --- */
+#diver1 {
+    left: 200px;
+    top: 100px;
+    animation-name: DiverMove;
+    animation-duration: 15s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; 
+}
+
+@keyframes DiverMove {
+    0%   { left: 200px; top: 100px; }
+    50%  { left: 400px; top: 500px; } 
+    100% { left: 600px; top: 100px; } 
+}
+
+/* --- 3. Rùa (Turtle) --- */
+#turtle {
+    left: 800px;
+    top: 500px;
+    animation-name: TurtleMove;
+    animation-duration: 20s; 
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes TurtleMove {
+    0%   { left: 800px; top: 500px; transform: scaleX(1); }
+    49%  { left: 50px; top: 500px; transform: scaleX(1); } 
+    50%  { left: 50px; top: 500px; transform: scaleX(-1); } 
+    99%  { left: 800px; top: 500px; transform: scaleX(-1); } 
+    100% { left: 800px; top: 500px; transform: scaleX(1); } 
+}
+
+/* --- 4. Con Vật mới (Cá Vàng) --- */
+.new-animal {
+    animation-duration: 8s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes GoldFishMove {
+    0%   { transform: translate(0, 0); }
+    33%  { transform: translate(150px, -50px); }
+    66%  { transform: translate(300px, 100px); }
+    100% { transform: translate(0, 0); }
+}
+
+
